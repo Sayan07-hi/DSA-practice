@@ -28,16 +28,25 @@ void printnode(struct node *head){
     printf("NULL\n");
 }
 
-struct node* deleteend(struct node *head){
-    struct node *ptr=head;
-    while(ptr->next->next != NULL){
-        ptr=ptr->next;
-    }
 
-    ptr->next=NULL;
+struct node* deleteend(struct node *head){
+    if(head == NULL) {
+        printf("The list is empty.\n");
+    }
+    else if(head->next == NULL) {
+        free(head);
+        head = NULL;
+    }
+    else {
+        struct node *ptr = head;
+        while(ptr->next->next != NULL) {
+            ptr = ptr->next;
+        }
+        free(ptr->next);
+        ptr->next = NULL;
+    }
     return head;
 }
-
 int main() {
     int n,i;
     struct node *head = (struct node*)malloc(sizeof(struct node));

@@ -29,11 +29,15 @@ class LinkedList:
 
     #Delete at end of the linked list.
     def deleteend(self):
-        ptr=self.head
-        while(ptr.next.next != None):
-            ptr=ptr.next
-        ptr.next=None
-        return head
+        if self.head is None:
+            print("The list is empty.")
+        elif self.head.next is None:
+            self.head = None
+        else:
+            ptr = self.head
+            while ptr.next.next is not None:
+                ptr = ptr.next
+            ptr.next = None
     
 head=LinkedList()
 head.insertend(1)
